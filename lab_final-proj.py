@@ -2,6 +2,7 @@ import turtle
 import time
 turtle.tracer(1,0)
 
+
 screen = turtle.Screen()
 screen.setup(1000,1500)
 
@@ -16,6 +17,42 @@ screen.shape("bgpic.gif")
 screen.shapesize(1000,900)
 #Window size and screen
 
+q="1.what are the plants and trees release into the air?"
+a="a.air   b.oxygin  c.music  d.zack's fart"
+q1="what colour is the trash can you put the boxes in?"
+a1="a.Orange b.Blue c.Green d.Black"
+q2="scientists say that till 2050 there will be more plastic than fish in the oceans"
+a2="True      False"
+q3="in the worldwide, how many single-use plastic bags are used per year?"
+a3="a.300,000  b.6 Billions  c.500 Billions  d.2 Trillions"
+
+
+ques=[q,q1,q2,q3]
+ans=[a,a1,a2,a3]
+nq=ques[0]
+
+"""
+def new_ques():
+    global nq
+    index_ques = ques.index(nq)
+    nq = ques[index_ques+1]
+    new_ques()
+"""
+
+
+tx=turtle.clone()
+tx.penup()
+tx.goto(-450,450)
+tx.write(q, font=("Arial", 30, " normal"))
+tx.hideturtle()
+
+ans=turtle.clone()
+ans.penup()
+ans.goto(-350,350)
+ans.write(a, font=("Arial", 30, " normal"))
+ans.hideturtle()
+
+"""
 
 #Box is the reqtangle where we see the riddles
 box=turtle.clone()
@@ -31,6 +68,7 @@ box.goto(-460,500)
 box.goto(460,500)
 box.end_fill()
 #The question's box is ready
+"""
 
 #here we are registering the tree pics
 turtle.register_shape('tree1.gif')
@@ -180,8 +218,6 @@ if answer_5.lower() == "false" or answer_5.lower() == "f":
     x = x + 1
 else:
     incorrect()
-
-
 
 
 #Total Score
