@@ -1,5 +1,19 @@
 import turtle
 import time
+import pygame
+
+pygame.mixer.pre_init(44100, -16, 2, 2048) # setup mixer to avoid sound lag
+
+pygame.init()
+
+pygame.mixer.init()
+
+pygame.mixer.music.load("minecraft.mp3")
+
+pygame.mixer.music.play(-1)
+
+
+
 turtle.tracer(1,0)
 
 
@@ -74,7 +88,8 @@ def new_ques():
     tx.clear()
     global nq
     index_ques = ques.index(nq)
-    nq = ques[index_ques+1]
+    nq = ques.pop(index_ques+1)
+    
     
 
     tx.penup()
@@ -187,6 +202,8 @@ if answer_1.lower() == "b" or answer_1.lower() == "oxygen":
     correct()
     x = x + 1   
 else:
+    pygame.mixer.music.load("trombone.mp3")
+    pygame.mixer.music.play(1)
     print("Incorrect")
     
 
@@ -197,6 +214,8 @@ if answer_2.lower() == "a" or answer_2.lower() == "orange":
     correct()
     x = x + 1
 else:
+    pygame.mixer.music.load("trombone.mp3")
+    pygame.mixer.music.play(1)
     incorrect()
 
 # Question Three
@@ -206,6 +225,8 @@ if answer_3.lower() == "true" or answer_3.lower() == "t":
     correct()
     x = x + 1
 else:
+    pygame.mixer.music.load("trombone.mp3")
+    pygame.mixer.music.play(1)
     incorrect()
      
 # Question Four
@@ -215,6 +236,8 @@ if answer_4.lower() == "c" or answer_4 == "500 billions":
     correct()
     x = x + 1
 else:
+    pygame.mixer.music.load("trombone.mp3")
+    pygame.mixer.music.play(1)
     incorrect()
 
 # Question Five 
@@ -224,6 +247,8 @@ if answer_5.lower() == "false" or answer_5.lower() == "f":
     correct()
     x = x + 1
 else:
+    pygame.mixer.music.load("trombone.mp3")
+    pygame.mixer.music.play(1)
     incorrect()
 
 
@@ -234,6 +259,8 @@ if answer_1.lower() == "c" or answer_1.lower() == "5000":
     correct()
     x = x + 1   
 else:
+    pygame.mixer.music.load("trombone.mp3")
+    pygame.mixer.music.play(1)
     incorrect()
 
 # Question seven
@@ -243,6 +270,8 @@ if answer_2.lower() == "b" or answer_2.lower() == "China":
     correct()
     x = x + 1
 else:
+    pygame.mixer.music.load("trombone.mp3")
+    pygame.mixer.music.play(1)
     print("Incorrect, it's China")
 
 # Question eight
@@ -252,6 +281,8 @@ if answer_3.lower() == "true" or answer_3.lower() == "t":
     correct()
     x = x + 1
 else:
+    pygame.mixer.music.load("trombone.mp3")
+    pygame.mixer.music.play(1)
     incorrect()
 
 """
@@ -279,7 +310,7 @@ else:
 score = float(x / 8) * 100
 print(x,"out of 8, that is",score, "%")
 print("game over.")
-
+pygame.mixer.music.stop()
 quit()
 
 
