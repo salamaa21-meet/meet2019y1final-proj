@@ -21,36 +21,98 @@ q="1.what are the plants and trees release into the air?"
 a="a.air   b.oxygin  c.music  d.zack's fart"
 q1="what colour is the trash can you put the boxes in?"
 a1="a.Orange b.Blue c.Green d.Black"
-q2="scientists say that till 2050 there will be more plastic than fish in the oceans"
-a2="True      False"
-q3="in the worldwide, how many single-use plastic bags are used per year?"
+q2="scientists say that till 2050 there will be more plastic -"
+pq="than fish in the ocean." 
+a2="True            False"
+q3="in the worldwide, how many single-use plastic bags are -"
+pq1="used per year?"  
 a3="a.300,000  b.6 Billions  c.500 Billions  d.2 Trillions"
+q4="60,000 marine creatures are dying from plastic entanglement every year"
+a4="True      False"
+q5="How many people die every day as result of drinking unclean water?"
+a5="a.1000     b.300         c.5000         d.2670"
+q6="What is the world's largest producer of carbon dioxide"
+a6="a.USA      b.China       c.France       d.Italy"
+q7="acidifiscation of the ocean is the worst type of pollution"
+a7="True     False"
+q8="How many killograms of garbage a single person does in the USA"
+a8="a.0.5     b.1            c.3            d.2"
+q9="The pollution is China doesn't change the weather in the USA"
+a9="True     False"
 
+#here we put the questions and the answers in variables (we are going to do the same thing we did in the trees)
 
-ques=[q,q1,q2,q3]
-ans=[a,a1,a2,a3]
+ques=[q,q1,q2,q3,q4,q5,q6,q7,q8,a9]
+partq=[pq,pq1]
+ans=[a,a1,a2,a3,a4,a5,a6,a7,a8,a9]
+#we put them in a list
 nq=ques[0]
-
-"""
-def new_ques():
-    global nq
-    index_ques = ques.index(nq)
-    nq = ques[index_ques+1]
-    new_ques()
-"""
+npq=partq[0]
+na=ans[0]
+#we are putting one variable and its going to be changed as its position in the list
 
 
 tx=turtle.clone()
 tx.penup()
-tx.goto(-450,450)
-tx.write(q, font=("Arial", 30, " normal"))
+tx.goto(-480,450)
+tx.write(nq, font=("Arial", 30, " normal"))
 tx.hideturtle()
+#here we print the questions
 
-ans=turtle.clone()
-ans.penup()
-ans.goto(-350,350)
-ans.write(a, font=("Arial", 30, " normal"))
-ans.hideturtle()
+an=turtle.clone()
+an.penup()
+an.goto(-480,350)
+an.write(na, font=("Arial", 30, " normal"))
+an.hideturtle()
+
+prq=turtle.clone()
+prq.penup()
+prq.goto(-480,400)
+prq.write(npq, font=("Arial", 30, " normal"))
+prq.hideturtle()
+
+
+
+
+
+def new_ques():
+    tx.clear()
+    global nq
+    index_ques = ques.index(nq)
+    nq = ques[index_ques+1]
+    
+
+    tx.penup()
+    tx.goto(-480,450)
+    tx.write(nq, font=("Arial", 30, " normal"))
+    tx.hideturtle()
+#a function to change the questions every time
+
+def new_ques():
+    tx.clear()
+    global nq
+    index_partq = partq.index(npq)
+    npq = partq[index_partq+1]
+    
+
+    prq.penup()
+    prq.goto(-480,000)
+    prq.write(npq, font=("Arial", 30, " normal"))
+    prq.hideturtle()
+
+def new_answer():
+    an.clear()
+    global na
+    index_ans = ans.index(na)
+    na = ans[index_ans + 1]
+
+    an.penup()
+    an.goto(-480,350)
+    an.write(na, font=("Arial", 30, " normal"))
+    an.hideturtle()
+
+    
+
 
 """
 
@@ -116,13 +178,18 @@ def correct():
     index_plants = plants.index(plant)
     plant=plants[index_plants+1]
     tree.shape(plant)
+    new_ques()
+    new_answer()
 
 def incorrect():
     print("incorrect")
     global plant
     index_plants = plants.index(plant)
     plant=plants[index_plants-1]
-    tree.shape(plant)    
+    
+    tree.shape(plant)
+    new_ques()
+    new_answer()
 #The questions
 x = 0
 score = x
@@ -134,7 +201,8 @@ if answer_1.lower() == "b" or answer_1.lower() == "oxygen":
     correct()
     x = x + 1   
 else:
-    incorrect()
+    print("Incorrect")
+    
 
 # Question Two
 print("What color is the trash can you put the boxes in")
