@@ -93,8 +93,10 @@ score = x
 
 
 def game_over():
-    score = float(x / 8) * 100
-    print(x,"out of 8, that is",score, "%")
+    global x
+    x=x+1
+    score = float(x / 7) * 100
+    print(x,"out of 7, that is",score, "%")
     print("game over.")
     pygame.mixer.music.stop()
     tx.clear()
@@ -109,9 +111,9 @@ def new_ques():
     tx.clear()
     global nq
     index_ques = ques.index(nq)
-    print("------------------- the index is ", index_ques)
-    print("-------- the ques list is ", ques)
-    print("the length of the list is ", len(ques))
+    #print("------------------- the index is ", index_ques)
+    #print("-------- the ques list is ", ques)
+    #print("the length of the list is ", len(ques))
     nq = ques[index_ques+1]
     
 
@@ -336,7 +338,7 @@ else:
     incorrect()
 """
 
-#Total Score
+
 
 
 
