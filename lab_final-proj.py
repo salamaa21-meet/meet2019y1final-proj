@@ -1,5 +1,4 @@
 import turtle
-import time
 import pygame
 
 pygame.mixer.pre_init(44100, -16, 2, 2048) # setup mixer to avoid sound lag
@@ -19,11 +18,12 @@ turtle.tracer(1,0)
 
 screen = turtle.Screen()
 screen.setup(1000,1500)
-
+"""
 UP_EDGE = 400
 DOWN_EDGE = -500
 RIGHT_EDGE = 460
 LEFT_EDGE = -460
+"""
 
 screen=turtle.clone()
 turtle.register_shape("bgpic.gif")
@@ -47,6 +47,7 @@ q6="7.What is the world's largest producer of carbon dioxide"
 a6="a.USA      b.China       c.France       d.Italy"
 q7="8.acidifiscation of the ocean is the worst type of \n pollution"
 a7="True     False"
+
 """
 q8="9.How many killograms of garbage a single person does in the USA"
 a8="a.0.5     b.1            c.3            d.2"
@@ -70,6 +71,8 @@ tx.penup()
 tx.goto(-480,400)
 tx.write(nq, font=("Arial", 30, " normal"))
 tx.hideturtle()
+
+#nq = ques[1]
 #here we print the questions
 
 an=turtle.clone()
@@ -78,6 +81,24 @@ an.goto(-480,350)
 an.write(na, font=("Arial", 30, " normal"))
 an.hideturtle()
 
+#na = ans[1]
+
+
+
+#The questions
+x = 0
+score = x
+
+
+
+
+def game_over():
+    score = float(x / 8) * 100
+    print(x,"out of 8, that is",score, "%")
+    print("game over.")
+    pygame.mixer.music.stop()
+    tx.clear()
+    quit()
 
 
 
@@ -88,8 +109,10 @@ def new_ques():
     tx.clear()
     global nq
     index_ques = ques.index(nq)
-    nq = ques.pop(index_ques+1)
-    
+    print("------------------- the index is ", index_ques)
+    print("-------- the ques list is ", ques)
+    print("the length of the list is ", len(ques))
+    nq = ques[index_ques+1]
     
 
     tx.penup()
@@ -102,12 +125,18 @@ def new_answer():
     an.clear()
     global na
     index_ans = ans.index(na)
+    if (index_ans + 1) > 6:
+        game_over()
+        
     na = ans[index_ans + 1]
 
     an.penup()
     an.goto(-480,350)
     an.write(na, font=("Arial", 30, " normal"))
     an.hideturtle()
+    
+
+
 
     
 
@@ -205,6 +234,7 @@ else:
     pygame.mixer.music.load("trombone.mp3")
     pygame.mixer.music.play(1)
     print("Incorrect")
+    incorrect()
     
 
 # Question Two
@@ -307,11 +337,6 @@ else:
 """
 
 #Total Score
-score = float(x / 8) * 100
-print(x,"out of 8, that is",score, "%")
-print("game over.")
-pygame.mixer.music.stop()
-quit()
 
 
 
